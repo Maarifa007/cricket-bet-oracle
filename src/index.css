@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -98,4 +99,17 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Custom styles for cricket-related elements */
+.cricket-gradient {
+  background: linear-gradient(to right, #14b8a6, #0f766e);
+}
+
+.odds-changed-up {
+  @apply text-green-600 transition-colors duration-300;
+}
+
+.odds-changed-down {
+  @apply text-red-600 transition-colors duration-300;
 }
