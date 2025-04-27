@@ -1,7 +1,7 @@
 
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
+import { Github } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export const AppHeader: React.FC = () => {
@@ -42,7 +42,7 @@ export const AppHeader: React.FC = () => {
           rel="noopener noreferrer"
         >
           <Button variant="outline" size="sm">
-            <GitHubLogoIcon className="h-4 w-4 mr-2" />
+            <Github className="h-4 w-4 mr-2" />
             <span className="hidden md:inline">GitHub</span>
           </Button>
         </a>
