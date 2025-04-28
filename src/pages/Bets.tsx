@@ -17,7 +17,7 @@ const Bets = () => {
 
   const getBadgeVariant = (status: string) => {
     switch (status) {
-      case 'win': return 'success';
+      case 'win': return 'default'; // Changed from 'success' to 'default' for winning bets
       case 'lose': return 'destructive';
       case 'pending': return 'secondary';
       case 'push': return 'outline';
