@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useEffect } from "react";
 import { AppLayout } from "@/components/AppLayout";
 import { SummaryCard, CardIcons } from "@/components/SummaryCard";
 import { ScrapingControls } from "@/components/ScrapingControls";
@@ -18,48 +18,56 @@ import {
   fetchScrapeLogs,
   fetchMatchesToScrape,
   fetchSummaryStats,
-  bookmakers,
-} from "@/services/mockData";
+} from "@/services/supabaseService";
+import { bookmakers } from "@/services/mockData";
 import { useQuery } from "@tanstack/react-query";
 
 const Dashboard = () => {
   const { toast } = useToast();
   const [isScrapingActive, setIsScrapingActive] = React.useState(true);
+  const REFETCH_INTERVAL = 60 * 1000; // 60 seconds
 
-  // Fetch data using React Query
+  // Fetch data using React Query with polling
   const { data: oddsSnapshots, isLoading: oddsLoading } = useQuery({
     queryKey: ["odds"],
     queryFn: fetchOddsSnapshots,
+    refetchInterval: REFETCH_INTERVAL,
   });
 
   const { data: matchResults, isLoading: resultsLoading } = useQuery({
     queryKey: ["results"],
     queryFn: fetchMatchResults,
+    refetchInterval: REFETCH_INTERVAL,
   });
 
   const { data: bets, isLoading: betsLoading } = useQuery({
     queryKey: ["bets"],
     queryFn: fetchBets,
+    refetchInterval: REFETCH_INTERVAL,
   });
 
   const { data: gradingLogs, isLoading: gradingLoading } = useQuery({
     queryKey: ["grading"],
     queryFn: fetchGradingLogs,
+    refetchInterval: REFETCH_INTERVAL,
   });
 
   const { data: scrapeLogs, isLoading: logsLoading } = useQuery({
     queryKey: ["logs"],
     queryFn: fetchScrapeLogs,
+    refetchInterval: REFETCH_INTERVAL,
   });
 
   const { data: matchesToScrape, isLoading: matchesLoading } = useQuery({
     queryKey: ["matches"],
     queryFn: fetchMatchesToScrape,
+    refetchInterval: REFETCH_INTERVAL,
   });
 
   const { data: summaryStats, isLoading: statsLoading } = useQuery({
     queryKey: ["stats"],
     queryFn: fetchSummaryStats,
+    refetchInterval: REFETCH_INTERVAL,
   });
 
   // Handle scraping toggle
