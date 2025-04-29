@@ -1,14 +1,14 @@
 
 // Re-export all service functions for convenient access
 export {
-  fetchLatestOdds,
+  fetchLatestOdds as fetchOddsSnapshots,
   fetchOddsHistory,
-  fetchScrapeLogsHistory,
+  fetchScrapeLogsHistory as fetchScrapeLogs,
   getActiveBookmakers
 } from './oddsService';
 
 export {
-  fetchAllBets,
+  fetchAllBets as fetchBets,
   fetchUserBets,
   placeBet
 } from './betService';

@@ -21,6 +21,7 @@ import {
 } from "@/services/supabaseService";
 import { bookmakers } from "@/services/mockData";
 import { useQuery } from "@tanstack/react-query";
+import { OddsSnapshot, ScrapeLog, Bet, GradingLog, MatchResult, MatchToScrape, SummaryStats } from "@/types";
 
 const Dashboard = () => {
   const { toast } = useToast();
@@ -28,43 +29,43 @@ const Dashboard = () => {
   const REFETCH_INTERVAL = 60 * 1000; // 60 seconds
 
   // Fetch data using React Query with polling
-  const { data: oddsSnapshots, isLoading: oddsLoading } = useQuery({
+  const { data: oddsSnapshots, isLoading: oddsLoading } = useQuery<OddsSnapshot[]>({
     queryKey: ["odds"],
     queryFn: fetchOddsSnapshots,
     refetchInterval: REFETCH_INTERVAL,
   });
 
-  const { data: matchResults, isLoading: resultsLoading } = useQuery({
+  const { data: matchResults, isLoading: resultsLoading } = useQuery<MatchResult[]>({
     queryKey: ["results"],
     queryFn: fetchMatchResults,
     refetchInterval: REFETCH_INTERVAL,
   });
 
-  const { data: bets, isLoading: betsLoading } = useQuery({
+  const { data: bets, isLoading: betsLoading } = useQuery<Bet[]>({
     queryKey: ["bets"],
     queryFn: fetchBets,
     refetchInterval: REFETCH_INTERVAL,
   });
 
-  const { data: gradingLogs, isLoading: gradingLoading } = useQuery({
+  const { data: gradingLogs, isLoading: gradingLoading } = useQuery<GradingLog[]>({
     queryKey: ["grading"],
     queryFn: fetchGradingLogs,
     refetchInterval: REFETCH_INTERVAL,
   });
 
-  const { data: scrapeLogs, isLoading: logsLoading } = useQuery({
+  const { data: scrapeLogs, isLoading: logsLoading } = useQuery<ScrapeLog[]>({
     queryKey: ["logs"],
     queryFn: fetchScrapeLogs,
     refetchInterval: REFETCH_INTERVAL,
   });
 
-  const { data: matchesToScrape, isLoading: matchesLoading } = useQuery({
+  const { data: matchesToScrape, isLoading: matchesLoading } = useQuery<MatchToScrape[]>({
     queryKey: ["matches"],
     queryFn: fetchMatchesToScrape,
     refetchInterval: REFETCH_INTERVAL,
   });
 
-  const { data: summaryStats, isLoading: statsLoading } = useQuery({
+  const { data: summaryStats, isLoading: statsLoading } = useQuery<SummaryStats>({
     queryKey: ["stats"],
     queryFn: fetchSummaryStats,
     refetchInterval: REFETCH_INTERVAL,

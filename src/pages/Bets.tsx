@@ -7,9 +7,10 @@ import { Badge } from "@/components/ui/badge";
 import { fetchBets } from "@/services/supabaseService";
 import { useQuery } from "@tanstack/react-query";
 import { formatDistanceToNow } from "date-fns";
+import { Bet } from "@/types";
 
 const Bets = () => {
-  const { data: bets, isLoading } = useQuery({
+  const { data: bets, isLoading } = useQuery<Bet[]>({
     queryKey: ["all-bets"],
     queryFn: fetchBets,
     refetchInterval: 60 * 1000, // Refetch every 60 seconds
