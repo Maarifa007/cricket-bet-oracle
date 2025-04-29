@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PlayIcon, PauseIcon, RotateCwIcon, AlertCircleIcon } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
-import { triggerScrape, triggerBetGrading } from "@/services/mockData";
+import { triggerScrape, triggerBetGrading } from "@/services/supabaseService";
 
 interface ScrapingControlsProps {
   isScrapingActive?: boolean;
